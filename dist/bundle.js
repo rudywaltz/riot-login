@@ -47,12 +47,13 @@
 	'use strict';
 
 	window.riot = __webpack_require__(1);
+	//require('./component/e-head.js');
+	//require('./component/e-input.js');
+	//require('./component/e-form.js');
+	//require('./component/my-tag.js');
 	__webpack_require__(2);
 	__webpack_require__(3);
 	__webpack_require__(4);
-	__webpack_require__(5);
-	__webpack_require__(6);
-	__webpack_require__(7);
 
 	document.write('holy smoke');
 
@@ -886,91 +887,41 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	//riot.tag('e-header',
-	//    '<h1>' +
-	//        '{opts.headertitle}' +
-	//    '</h1>',
-	//
-	//    function(opts) {
-	//    });
-	//
-	//riot.mount('e-header');
-	//
-	//
+	riot.tag('e-col',
+	    '<div class="col col-{opts.colsize}">' +
+	    '<inner-html></inner-html>' +
+	    '</div>',
 
+	    function(opts) {
+	    });
 
 /***/ },
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	//riot.tag('e-input',
-	//    '<input type="text" placeholder="user name">',
-	//
-	//    function(opts) {
-	//        console.table(this);
-	//    });
-	//
-	//riot.mount('e-input');
+	riot.tag('inner-html', '',
+
+	    function(opts) {
+	        var self = this;
+	        var p = this.parent.root;
+	        while (p.firstChild) {
+	            this.root.appendChild(p.firstChild);
+	        }
+	    });
+
+
 
 /***/ },
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	//riot.tag('e-form',
-	//    '<form>' +
-	//        '<input type="text">' +
-	//    '</form>',
-	//
-	//    function(opts) {
-	//
-	//    });
-	//
-	//riot.mount('e-form');
-	//
-
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	riot.tag('my-tag',
-	    '<p>' +
-	    'Some tag specific markup' +
-	    '<inner-html />' +
-	    '</p>',
-
-	    function(opts) {
-	    });
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	riot.tag('inner-html',
-	    '<p> inner tag </p>',
-
-	    function(opts) {
-	        var self = this;
-	        console.log(self);
-	        //var p = this.parent.root;
-	        //while (p.firstChild) {
-	        //    this.root.appendChild(p.firstChild);
-	        //}
-	    });
-
-
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(8);
+	var content = __webpack_require__(5);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
@@ -984,14 +935,14 @@
 	}
 
 /***/ },
-/* 8 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(10)();
+	exports = module.exports = __webpack_require__(7)();
 	exports.push([module.id, "body{background:#ccc}form input{background:rgba(0,128,0,0.2)}", ""]);
 
 /***/ },
-/* 9 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1187,7 +1138,7 @@
 
 
 /***/ },
-/* 10 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function() {
