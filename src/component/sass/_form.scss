@@ -1,0 +1,16 @@
+.field {
+    margin-bottom: 10px;
+
+    input {
+        outline: none;
+    }
+    label {
+        display: block;
+    }
+
+    &.field-error {
+        input {
+            border: 1px solid red;
+        }
+    }
+}

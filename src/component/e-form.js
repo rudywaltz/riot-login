@@ -1,11 +1,9 @@
-//riot.tag('e-form',
-//    '<form>' +
-//        '<input type="text">' +
-//    '</form>',
-//
-//    function(opts) {
-//
-//    });
-//
-//riot.mount('e-form');
-//
+riot.tag('e-form',
+    '<form id="log">' +
+        '<inner-html></inner-html>' +
+    '<input type="submit" value="submit form">' +
+    '</form>',
+
+    function(opts) {
+    });
+

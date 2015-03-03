@@ -6,32 +6,28 @@
 </head>
 <body>
 
-<e-col colsize="6" >
-    <h2>col system</h2>
-    <e-col colsize="3" >
-        nested-col
+<div class="row">
+    <e-col colsize="6">
+        <h2>Login</h2>
+        <e-form>
+            <e-formfieldset>
+                <e-input type="text" inputname="nolabel"><e-error></e-error></e-input>
+            </e-formfieldset>
+
+            <e-formfieldset legend="Login data">
+               <e-input type="text" inputname="username" labelname="Username" pattern="^[a-zA-Z]*$"></e-input>
+               <e-input type="text" inputname="tel" labelname="tel" pattern="^[0-9]*$"></e-input>
+               <e-input type="password" inputname="pswrd" labelname="Password" showpswrd="true"></e-input>
+            </e-formfieldset>
+        </e-form>
     </e-col>
-</e-col>
+</div>
 
 
 
-<!--<my-tag>-->
-<!--<h3>Hello world!</h3>-->
-<!--<input type="text" placeholder=""/>-->
-<!--<p>lofgsfewm</p>-->
 
-<!--<form action=>-->
-<!--<input type="text" placeholder="form input"/>-->
-<!--<button type="submit">Lorem</button>-->
-<!--</form>-->
-<!--</my-tag>-->
-
+<script src="jquery-2.1.3.min.js"></script>
 <script src="bundle.js"></script>
-<!--<script src="../src/riot.min.js"></script>-->
-<!--<script src="../src/component/inner-html.js"></script>-->
-<!--<script src="../src/component/my-tag.js"></script>-->
-<!--<script src="../src/component/e-col.js"></script>-->
-<script>riot.mount('my-tag');</script>
-<script>riot.mount('e-col');</script>
+<script>riot.mount('*');</script>
 </body>
 </html>

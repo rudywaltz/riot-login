@@ -47,15 +47,16 @@
 	'use strict';
 
 	window.riot = __webpack_require__(1);
-	//require('./component/e-head.js');
-	//require('./component/e-input.js');
-	//require('./component/e-form.js');
-	//require('./component/my-tag.js');
 	__webpack_require__(2);
 	__webpack_require__(3);
 	__webpack_require__(4);
+	__webpack_require__(5);
+	__webpack_require__(6);
+	__webpack_require__(7);
+	__webpack_require__(8);
 
 	document.write('holy smoke');
+
 
 /***/ },
 /* 1 */
@@ -887,26 +888,27 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	riot.tag('e-col',
-	    '<div class="col col-{opts.colsize}">' +
-	    '<inner-html></inner-html>' +
-	    '</div>',
+	riot.tag('e-form',
+	    '<form id="log">' +
+	        '<inner-html></inner-html>' +
+	    '<input type="submit" value="submit form">' +
+	    '</form>',
 
 	    function(opts) {
 	    });
+
+
 
 /***/ },
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	riot.tag('inner-html', '',
+	riot.tag('e-formfieldset',
+	    ' <fieldset><legend if="{opts.legend}">{opts.legend}</legend>' +
+	    '<inner-html></inner-html>' +
+	    '</fieldset>',
 
 	    function(opts) {
-	        var self = this;
-	        var p = this.parent.root;
-	        while (p.firstChild) {
-	            this.root.appendChild(p.firstChild);
-	        }
 	    });
 
 
@@ -915,13 +917,104 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
+	riot.tag('e-input',
+	    '<div class="field {field-error : error}"><label for="input-{opts.inputname}" if="{opts.labelname}">{opts.labelname}</label> ' +
+	    '<input type="{opts.type}" name="{opts.inputname}" id="i{opts.inputname}" ><br>' +
+	    '<inner-html></inner-html>' +
+	    '<span show="{error}">{error}</span>' +
+	    '<div if="{opts.showpswrd}"><label for="{opts.inputname}-show" ><input type="checkbox" id="{opts.inputname}-show" onclick="{showPw}">Show password</label></div>' +
+	    '</div>',
+
+	    function(opts) {
+	        var self = this;
+
+	        if(opts.pattern) {
+	        $(function() {
+	            $('#i' + opts.inputname).on('keyup', function() {
+	                validate(this.value);
+	            });
+	        });
+
+	        var validate = function(value) {
+	            var re = new RegExp(opts.pattern);
+	            var valid = re.test(value);
+	            var error_message;
+	            if(!valid) {
+	                error_message = 'hola';
+	            }
+	            self.update({ error: error_message });
+	        };
+
+	        }
+
+	        if(opts.showpswrd) {
+	            self.showPw = function(e) {
+	                var $pswrdInput = $('#ipswrd');
+	                if($pswrdInput.attr('type') === 'password' ) {
+	                    $pswrdInput.attr('type', 'text');
+	                } else {
+	                    $pswrdInput.attr('type', 'password');
+	                }
+	                return true;
+	            };
+	        }
+	    });
+
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	riot.tag('e-col',
+	    '<div class="column col-{opts.colsize}">' +
+	    '<inner-html></inner-html>' +
+	    '</div>',
+
+	    function(opts) {
+	    });
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	riot.tag('e-error',
+	    '<div>error' +
+	    '</div>',
+
+	    function(opts) {
+	        var par = this;
+	        console.log(par);
+	    });
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	riot.tag('inner-html', '',
+
+	    function(opts) {
+	        var self = this;
+	        var p = self.parent.root;
+	        while (p.firstChild) {
+	            this.root.appendChild(p.firstChild);
+	        }
+	    });
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(5);
+	var content = __webpack_require__(9);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
+	var update = __webpack_require__(10)(content, {});
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
@@ -935,14 +1028,14 @@
 	}
 
 /***/ },
-/* 5 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(7)();
-	exports.push([module.id, "body{background:#ccc}form input{background:rgba(0,128,0,0.2)}", ""]);
+	exports = module.exports = __webpack_require__(11)();
+	exports.push([module.id, "*,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html,body{font-size:100%}body{background:#fff;color:#222;padding:0;margin:0;font-family:\"Helvetica Neue\", Helvetica, Roboto, Arial, sans-serif;font-weight:normal;font-style:normal;line-height:1.5;position:relative;cursor:auto}a:hover{cursor:pointer}img{max-width:100%;height:auto}img{-ms-interpolation-mode:bicubic}.row{margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5rem;width:100%}.row:before,.row:after{content:\" \";display:table}.row:after{clear:both}.row .row{margin-left:-0.9375rem;margin-right:-0.9375rem;margin-top:0;margin-bottom:0;max-width:none;width:auto}.column,.columns{padding-left:0.9375rem;padding-right:0.9375rem;width:100%;float:left}[class*=\"column\"]+[class*=\"column\"]:last-child{float:right}.col-1{width:8.33333%}.col-2{width:16.66667%}.col-3{width:25%}.col-4{width:33.33333%}.col-5{width:41.66667%}.col-6{width:50%}.col-7{width:58.33333%}.col-8{width:66.66667%}.col-9{width:75%}.col-10{width:83.33333%}.col-11{width:91.66667%}.col-12{width:100%}.field{margin-bottom:10px}.field input{outline:none}.field label{display:block}.field.field-error input{border:1px solid red}", ""]);
 
 /***/ },
-/* 6 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1138,7 +1231,7 @@
 
 
 /***/ },
-/* 7 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function() {

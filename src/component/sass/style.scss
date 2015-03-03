@@ -1,11 +1,4 @@
-$color-bg: #ccc;
-
-body {
-  background: $color-bg   ;
- }
-
-form {
-  input {
-    background: rgba(green, 0.2);
-  }
-}
+@import "variable";
+@import "global";
+@import "grid";
+@import "form";
