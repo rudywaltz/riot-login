@@ -23,6 +23,11 @@
     padding-right: 0.9375rem;
     width: 100%;
     float: left;
+
+    &.center {
+        float: none;
+        margin: 0 auto;
+    }
 }
 
 [class*="column"] + [class*="column"]:last-child {

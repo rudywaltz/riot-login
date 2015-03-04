@@ -13,4 +13,13 @@
             border: 1px solid red;
         }
     }
+
+    .error-helper {
+        background: #e74c3c;
+        color: #fff;
+        display: inline-block;
+        font-size: 12px;
+        margin-left: 10px;
+        padding: 0 10px;
+    }
 }

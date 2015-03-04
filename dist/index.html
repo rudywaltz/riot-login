@@ -7,16 +7,16 @@
 <body>
 
 <div class="row">
-    <e-col colsize="6">
+    <e-col colsize="5">
         <h2>Login</h2>
         <e-form>
             <e-formfieldset>
-                <e-input type="text" inputname="nolabel"><e-error></e-error></e-input>
+                <e-input type="text" inputname="nolabel"></e-input>
             </e-formfieldset>
-
             <e-formfieldset legend="Login data">
-               <e-input type="text" inputname="username" labelname="Username" pattern="^[a-zA-Z]*$"></e-input>
-               <e-input type="text" inputname="tel" labelname="tel" pattern="^[0-9]*$"></e-input>
+               <e-input type="text" inputname="name" labelname="Only pattern" pattern="^[a-zA-Z]*$"></e-input>
+               <e-input type="text" inputname="username" labelname="Username" pattern="^[a-zA-Z]*$" errormsg="Please don't use number"></e-input>
+               <e-input type="text" inputname="tel" labelname="tel" pattern="^[0-9]*$" errormsg="Only number"></e-input>
                <e-input type="password" inputname="pswrd" labelname="Password" showpswrd="true"></e-input>
             </e-formfieldset>
         </e-form>

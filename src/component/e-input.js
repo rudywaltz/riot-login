@@ -1,8 +1,7 @@
 riot.tag('e-input',
     '<div class="field {field-error : error}"><label for="input-{opts.inputname}" if="{opts.labelname}">{opts.labelname}</label> ' +
-    '<input type="{opts.type}" name="{opts.inputname}" id="i{opts.inputname}" ><br>' +
-    '<inner-html></inner-html>' +
-    '<span show="{error}">{error}</span>' +
+    '<input type="{opts.type}" name="{opts.inputname}" id="i{opts.inputname}" >' +
+    '<span show="{error}" class="error-helper">{error}</span>' +
     '<div if="{opts.showpswrd}"><label for="{opts.inputname}-show" ><input type="checkbox" id="{opts.inputname}-show" onclick="{showPw}">Show password</label></div>' +
     '</div>',
 
@@ -19,9 +18,10 @@ riot.tag('e-input',
         var validate = function(value) {
             var re = new RegExp(opts.pattern);
             var valid = re.test(value);
+            console.log( opts.errormsg);
             var error_message;
             if(!valid) {
-                error_message = 'hola';
+                error_message = opts.errormsg ? opts.errormsg : 'invalid field';
             }
             self.update({ error: error_message });
         };
