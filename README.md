@@ -1,3 +1,1 @@
-- nem kell egyenként mountolni elég a `riot.mount('*')`
-- nestidet hogyan?
 - hogyan verziózzuk egyenként az elemeket? bugfix vs feature.
